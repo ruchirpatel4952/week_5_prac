@@ -1,16 +1,15 @@
+
+
 #include "MusicBox.h"
 
-MusicBox::MusicBox() : song(""), width(0) {}
+MusicBox::MusicBox() : width_(0), songname_("Unknown") {} // Default constructor
 
-MusicBox::MusicBox(std::string songname, int width) : song(songname), width(width) {}
+MusicBox::MusicBox(const std::string& songname, int width) : width_(width), songname_(songname) {}
 
 std::string MusicBox::get_song() {
-    return song;
+    return songname_;
 }
 
-int MusicBox::get_width() {
-    return width;
-}
-
-MusicBox::~MusicBox() {
+int MusicBox::get_width() const {
+    return width_;
 }

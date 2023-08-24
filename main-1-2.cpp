@@ -1,27 +1,22 @@
 #include <iostream>
 #include "StoreShelf.h"
-#include "MusicBox.h" // Assuming you have a MusicBox class
 
 int main() {
-    StoreShelf shelf(100); // Create a shelf with a width of 100 centimeters
+    StoreShelf shelf(50);
+    MusicBox box1("Song A", 20); 
+    MusicBox box2("Song B", 30);
 
-    MusicBox box1('1',20); 
-    MusicBox box2('1',30); 
+    shelf.add_music_box(box1);
+    shelf.add_music_box(box2);
+    
 
-    if (shelf.add_music_box(box1)) {
-        std::cout << "Added box1 to the shelf." << std::endl;
-    } else {
-        std::cout << "Unable to add box1 to the shelf." << std::endl;
+    std::cout << "Shelf width: " << shelf.get_width() << " cm" << std::endl;
+    std::cout << "Number of music boxes: " << shelf.get_num_music_boxes() << std::endl;
+
+    MusicBox* contents = shelf.get_contents();
+    for (int i = 0; i < shelf.get_num_music_boxes(); i++) {
+        std::cout << "Music Box " << i + 1 << " song: " << contents[i].get_song() << ", width: " << contents[i].get_width() << " cm" << std::endl;
     }
-
-    if (shelf.add_music_box(box2)) {
-        std::cout << "Added box2 to the shelf." << std::endl;
-    } else {
-        std::cout << "Unable to add box2 to the shelf." << std::endl;
-    }
-
-    std::cout << "Shelf width: " << shelf.get_width() << " centimeters." << std::endl;
-    std::cout << "Number of music boxes on the shelf: " << shelf.get_num_music_boxes() << std::endl;
 
     return 0;
 }

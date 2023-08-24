@@ -6,14 +6,13 @@
 class MusicBox {
 public:
     MusicBox();
-    MusicBox(std::string songname, int width);
+    MusicBox(const std::string& songname, int width); // Changed the constructor parameter
+    int get_width() const;
     std::string get_song();
-    int get_width();
-    ~MusicBox();
 
 private:
-    std::string song;
-    int width;
+    int width_;
+    std::string songname_; // Added a member for songname
 };
 
-#endif 
+#endif // MUSICBOX_H
